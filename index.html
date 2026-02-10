@@ -7,7 +7,6 @@
   <title>ใบเสนอราคาราคาจอดรถสนามบิน UK | เปรียบเทียบง่าย ประหยัดกว่า</title>
 
   <link rel="canonical" href="https://airport-parking-quote.co.uk/" />
-  <link rel="stylesheet" href="style.css">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -31,15 +30,24 @@
   </script>
   <style>
     :root{
-  --bg: #0b0c0f;
+  --bg0:#070812;
+  --bg1:#0b0c16;
   --card: rgba(255,255,255,.06);
-  --border: rgba(255,255,255,.12);
+  --border: rgba(255,255,255,.14);
+
   --text: rgba(255,255,255,.92);
-  --muted: rgba(255,255,255,.70);
-  --soft: rgba(255,255,255,.18);
-  --shadow: 0 16px 40px rgba(0,0,0,.35);
+  --muted: rgba(255,255,255,.72);
+
+  --shadow: 0 18px 55px rgba(0,0,0,.45);
   --radius: 18px;
-  --max: 1060px;
+  --max: 1080px;
+
+  /* Accent colors */
+  --c1:#7c3aed; /* purple */
+  --c2:#06b6d4; /* cyan */
+  --c3:#22c55e; /* green */
+  --c4:#f59e0b; /* amber */
+  --c5:#ef4444; /* red */
 }
 
 *{ box-sizing:border-box; }
@@ -47,22 +55,25 @@ html,body{ height:100%; }
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans Thai", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  background:
-    radial-gradient(1200px 600px at 15% -10%, rgba(255,255,255,.10), transparent 60%),
-    radial-gradient(900px 500px at 90% 10%, rgba(255,255,255,.08), transparent 55%),
-    var(--bg);
   color: var(--text);
   line-height: 1.7;
+
+  background:
+    radial-gradient(1100px 520px at 10% 0%, rgba(124,58,237,.20), transparent 60%),
+    radial-gradient(900px 520px at 90% 12%, rgba(6,182,212,.18), transparent 55%),
+    radial-gradient(900px 520px at 50% 110%, rgba(34,197,94,.10), transparent 55%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
 }
 
 a{ color:inherit; text-decoration:none; }
-a:hover{ opacity:.92; }
+a:hover{ opacity:.96; }
 
 .container{
   width: min(var(--max), calc(100% - 44px));
   margin: 0 auto;
 }
 
+/* a11y */
 .skip{
   position:absolute;
   left:-999px;
@@ -75,18 +86,19 @@ a:hover{ opacity:.92; }
   left:16px; top:16px;
   width:auto; height:auto;
   padding:10px 12px;
-  background: rgba(0,0,0,.7);
+  background: rgba(0,0,0,.75);
   border:1px solid var(--border);
   border-radius: 12px;
   z-index:9999;
 }
 
+/* Header */
 .site-header{
   position: sticky;
   top: 0;
   z-index: 50;
-  backdrop-filter: blur(10px);
-  background: rgba(11,12,15,.62);
+  backdrop-filter: blur(12px);
+  background: rgba(10,10,18,.62);
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
 .header-inner{
@@ -99,25 +111,43 @@ a:hover{ opacity:.92; }
 
 .brand{ display:flex; align-items:center; gap:12px; }
 .logo{
-  width:40px;height:40px;
+  width:42px;height:42px;
   display:grid;place-items:center;
   border-radius: 14px;
-  background: rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.10);
-  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+  border:1px solid rgba(255,255,255,.14);
+  background:
+    radial-gradient(120% 120% at 30% 20%, rgba(255,255,255,.20), rgba(255,255,255,.06)),
+    linear-gradient(135deg, rgba(124,58,237,.25), rgba(6,182,212,.18));
+  box-shadow: 0 12px 30px rgba(0,0,0,.35);
 }
-.brand-name{ font-weight: 700; letter-spacing:.2px; }
+.brand-name{ font-weight: 800; letter-spacing:.2px; }
 .brand-tag{ font-size: 13px; color: var(--muted); margin-top:2px; }
 
+/* Nav */
 .nav{
   display:flex;
   align-items:center;
-  gap: 14px;
+  gap: 10px;
   font-size: 14px;
   color: var(--muted);
+  flex-wrap: wrap;
+  justify-content:flex-end;
 }
-.nav a{ padding: 8px 10px; border-radius: 12px; }
-.nav a:hover{ background: rgba(255,255,255,.06); color: var(--text); }
+.nav-link{
+  padding: 8px 10px;
+  border-radius: 12px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+}
+.nav-link:hover{
+  background: rgba(255,255,255,.07);
+  color: var(--text);
+  border-color: rgba(255,255,255,.16);
+}
+
+.nav-link.hk{ box-shadow: inset 0 0 0 1px rgba(124,58,237,.18); }
+.nav-link.sdy{ box-shadow: inset 0 0 0 1px rgba(34,197,94,.16); }
+.nav-link.sgp{ box-shadow: inset 0 0 0 1px rgba(6,182,212,.16); }
 
 .btn{
   display:inline-flex;
@@ -129,25 +159,39 @@ a:hover{ opacity:.92; }
   border: 1px solid rgba(255,255,255,.14);
   background: rgba(255,255,255,.06);
   color: var(--text);
-  box-shadow: 0 10px 24px rgba(0,0,0,.18);
-  transition: transform .08s ease, background .2s ease, border-color .2s ease;
+  box-shadow: 0 12px 30px rgba(0,0,0,.22);
+  transition: transform .08s ease, background .2s ease, border-color .2s ease, filter .2s ease;
   white-space: nowrap;
 }
-.btn:hover{ background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18); }
+.btn:hover{
+  background: rgba(255,255,255,.10);
+  border-color: rgba(255,255,255,.18);
+  filter: brightness(1.02);
+}
 .btn:active{ transform: translateY(1px); }
 
 .btn.primary{
-  background: rgba(255,255,255,.14);
-  border-color: rgba(255,255,255,.24);
+  border-color: rgba(255,255,255,.22);
+  background:
+    radial-gradient(120% 120% at 20% 10%, rgba(255,255,255,.22), rgba(255,255,255,.06)),
+    linear-gradient(135deg, rgba(124,58,237,.55), rgba(6,182,212,.45));
 }
 .btn.ghost{
   background: transparent;
   box-shadow: none;
 }
 
+.nav-btn.hk{
+  background: linear-gradient(135deg, rgba(124,58,237,.45), rgba(244,63,94,.25));
+}
+.nav-btn.sdy{
+  background: linear-gradient(135deg, rgba(34,197,94,.42), rgba(245,158,11,.22));
+}
+
+/* Hero */
 .hero{
   display:grid;
-  grid-template-columns: 1.4fr .9fr;
+  grid-template-columns: 1.35fr .95fr;
   gap: 22px;
   padding: 34px 0 18px;
 }
@@ -157,16 +201,22 @@ a:hover{ opacity:.92; }
   gap:10px;
   font-size: 13px;
   color: var(--muted);
-  padding: 6px 10px;
+  padding: 7px 12px;
   border: 1px solid rgba(255,255,255,.10);
   border-radius: 999px;
   background: rgba(255,255,255,.04);
 }
+.dot{
+  width:10px;height:10px;border-radius:999px;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  box-shadow: 0 0 0 4px rgba(124,58,237,.18);
+}
+
 h1{
-  font-size: clamp(28px, 3.4vw, 44px);
-  line-height: 1.18;
+  font-size: clamp(28px, 3.4vw, 46px);
+  line-height: 1.16;
   margin: 14px 0 10px;
-  letter-spacing: -.3px;
+  letter-spacing: -.35px;
 }
 h2{
   margin: 0 0 10px;
@@ -203,19 +253,33 @@ h3{
   background: rgba(255,255,255,.04);
 }
 
-.hero-card .card{
+.card{
   border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+  background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
   border: 1px solid rgba(255,255,255,.12);
   box-shadow: var(--shadow);
   padding: 18px;
 }
-
-.section{
-  padding: 26px 0;
+.glow{
+  position: relative;
+  overflow: hidden;
 }
+.glow::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:
+    radial-gradient(700px 260px at 20% 20%, rgba(124,58,237,.35), transparent 60%),
+    radial-gradient(700px 260px at 80% 0%, rgba(6,182,212,.28), transparent 60%);
+  opacity:.7;
+  pointer-events:none;
+}
+.glow > *{ position: relative; z-index: 1; }
+
+.section{ padding: 26px 0; }
 .section p{ color: var(--muted); margin: 0 0 12px; }
 
+/* Grids */
 .grid-3{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
@@ -235,13 +299,37 @@ h3{
   margin-top: 14px;
 }
 
+/* Boxes with colorful border accents */
 .box{
   padding: 16px;
   border-radius: var(--radius);
   background: rgba(255,255,255,.05);
   border: 1px solid rgba(255,255,255,.10);
-  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+  box-shadow: 0 12px 28px rgba(0,0,0,.18);
+  position: relative;
 }
+.box::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: var(--radius);
+  pointer-events:none;
+  background: linear-gradient(135deg, rgba(124,58,237,.22), rgba(6,182,212,.14), rgba(34,197,94,.12));
+  opacity:.22;
+  mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+  -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+  padding: 1px;
+  box-sizing: border-box;
+}
+.tilt{
+  transition: transform .12s ease, border-color .2s ease, background .2s ease;
+}
+.tilt:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.16);
+}
+
 .bullets{
   margin: 10px 0 0;
   padding-left: 18px;
@@ -263,19 +351,39 @@ h3{
   position: absolute;
   left: 0;
   top: 0;
-  color: rgba(255,255,255,.9);
-  opacity: .9;
+  color: rgba(255,255,255,.95);
+  opacity: .95;
 }
 
+/* Inline links (biar link kelihatan “warna” tapi tetap elegan) */
+.inline-link{
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(6,182,212,.55);
+  text-underline-offset: 3px;
+  color: rgba(255,255,255,.92);
+}
+.inline-link:hover{
+  text-decoration-color: rgba(124,58,237,.70);
+}
+
+/* Quote */
 .quote{
   margin: 18px 0 0;
   padding: 14px 16px;
   border-radius: var(--radius);
-  background: rgba(255,255,255,.05);
   border: 1px solid rgba(255,255,255,.10);
-  color: rgba(255,255,255,.86);
+  color: rgba(255,255,255,.88);
+  background: rgba(255,255,255,.05);
+}
+.quote.rainbow{
+  background:
+    radial-gradient(800px 250px at 10% 0%, rgba(245,158,11,.18), transparent 60%),
+    radial-gradient(800px 250px at 90% 0%, rgba(239,68,68,.14), transparent 60%),
+    rgba(255,255,255,.05);
 }
 
+/* CTA box */
 .cta-box{
   display:flex;
   align-items:center;
@@ -283,19 +391,33 @@ h3{
   gap: 14px;
   padding: 16px;
   border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
   border: 1px solid rgba(255,255,255,.12);
   box-shadow: var(--shadow);
   margin-top: 14px;
+  background:
+    radial-gradient(1000px 280px at 15% 20%, rgba(124,58,237,.22), transparent 62%),
+    radial-gradient(1000px 280px at 85% 0%, rgba(6,182,212,.18), transparent 62%),
+    rgba(255,255,255,.05);
 }
+
 .fineprint{
   margin-top: 12px;
   padding: 12px 14px;
   border-radius: var(--radius);
-  border: 1px dashed rgba(255,255,255,.12);
+  border: 1px dashed rgba(255,255,255,.14);
   background: rgba(255,255,255,.03);
 }
 
+code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 13px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+/* Footer */
 .footer{
   padding: 30px 0 44px;
   border-top: 1px solid rgba(255,255,255,.08);
@@ -313,16 +435,17 @@ h3{
   gap: 8px;
   color: var(--muted);
 }
-.legal a{ text-decoration: underline; text-decoration-color: rgba(255,255,255,.22); }
-
-code{
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 13px;
-  padding: 2px 6px;
-  border-radius: 10px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.10);
+.footer-link{
+  padding: 8px 10px;
+  border-radius: 12px;
+  border:1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
 }
+.footer-link:hover{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.14);
+}
+.legal a{ text-decoration: underline; text-decoration-color: rgba(255,255,255,.22); }
 
 /* Responsive */
 @media (max-width: 920px){
@@ -330,8 +453,9 @@ code{
   .grid-3, .split{ grid-template-columns: 1fr; }
   .grid-2{ grid-template-columns: 1fr; }
   .footer-grid{ grid-template-columns: 1fr; }
-  .nav{ display:none; }
+  .nav{ display:none; } /* header jadi clean di mobile */
 }
+
   </style>
 </head>
 
@@ -348,12 +472,12 @@ code{
         </div>
       </div>
 
-      <nav class="nav">
-        <a href="https://pandora-earrings.us/">Data HK</a>
-        <a href="https://pafitanglad.org/">Data SDY</a>
-        <a href="https://dailyideas.site/">Data SGP</a>
-        <a class="btn" href="https://anciklopedia.org/">Data HK Lotto</a>
-        <a class="btn" href="https://pafisalatigakabupaten.org/">Data SDY Lotto</a>
+      <nav class="nav" aria-label="External links">
+        <a class="nav-link hk" href="https://pandora-earrings.us/" target="_blank" rel="noopener noreferrer">Data HK</a>
+        <a class="nav-link sdy" href="https://pafitanglad.org/" target="_blank" rel="noopener noreferrer">Data SDY</a>
+        <a class="nav-link sgp" href="https://dailyideas.site/" target="_blank" rel="noopener noreferrer">Data SGP</a>
+        <a class="btn nav-btn hk" href="https://anciklopedia.org/" target="_blank" rel="noopener noreferrer">Data HK Lotto</a>
+        <a class="btn nav-btn sdy" href="https://pafisalatigakabupaten.org/" target="_blank" rel="noopener noreferrer">Data SDY Lotto</a>
       </nav>
     </div>
   </header>
@@ -361,8 +485,13 @@ code{
   <main id="content" class="container">
     <section class="hero">
       <div class="hero-left">
-        <p class="kicker">คู่มือฉบับสั้นสำหรับนักเดินทาง</p>
-        <h1>ใบเสนอราคาราคาจอดรถสนามบินใน UK<br/><span class="muted">เลือกให้คุ้มค่า ปลอดภัย และตรงเวลา</span></h1>
+        <p class="kicker"><span class="dot"></span> คู่มือฉบับสั้นสำหรับนักเดินทาง</p>
+
+        <h1>
+          ใบเสนอราคาราคาจอดรถสนามบินใน UK<br/>
+          <span class="muted">เลือกให้คุ้มค่า ปลอดภัย และตรงเวลา</span>
+        </h1>
+
         <p class="lead">
           ถ้าคุณบินจาก Heathrow, Gatwick, Manchester หรือสนามบินอื่น ๆ ในสหราชอาณาจักร
           การเลือกที่จอดรถที่เหมาะสมช่วยประหยัดได้มาก และลดความกังวลก่อนเดินทาง
@@ -382,7 +511,7 @@ code{
       </div>
 
       <div class="hero-card" role="region" aria-label="สรุปแบบเร็ว">
-        <div class="card">
+        <div class="card glow">
           <h2>สรุปเร็ว</h2>
           <ul class="checklist">
             <li>จองล่วงหน้า 1–4 สัปดาห์ มักได้ราคาดีกว่า</li>
@@ -401,11 +530,13 @@ code{
       <p>
         โดยทั่วไป “ที่จอดรถสนามบิน” ใน UK มีหลายแบบ ราคาและความสะดวกต่างกัน
         สิ่งสำคัญคืออย่าเลือกจาก “ราคาถูกสุด” อย่างเดียว แต่ให้ดูความเหมาะสมกับทริปของคุณ:
-        เวลาไฟลท์, จำนวนผู้โดยสาร, กระเป๋า, <a href="https://mycreative.store/">Data HK</a> และความเสี่ยงที่ยอมรับได้
+        เวลาไฟลท์, จำนวนผู้โดยสาร, กระเป๋า,
+        <a class="inline-link" href="https://mycreative.store/" target="_blank" rel="noopener noreferrer">Data HK</a>
+        และความเสี่ยงที่ยอมรับได้
       </p>
 
       <div class="grid-3">
-        <article class="box">
+        <article class="box tilt">
           <h3>1) ตำแหน่ง & ระยะทาง</h3>
           <p>
             On-site จะใกล้เทอร์มินัลที่สุด แต่แพงกว่า
@@ -413,7 +544,7 @@ code{
           </p>
         </article>
 
-        <article class="box">
+        <article class="box tilt">
           <h3>2) ความปลอดภัย</h3>
           <p>
             มองหากล้องวงจรปิด, รั้วรอบขอบชิด, ไฟส่องสว่าง, และเจ้าหน้าที่ 24 ชม.
@@ -421,7 +552,7 @@ code{
           </p>
         </article>
 
-        <article class="box">
+        <article class="box tilt">
           <h3>3) ความยืดหยุ่น</h3>
           <p>
             ดูเงื่อนไขยกเลิก/เปลี่ยนวัน, ค่าธรรมเนียม late arrival,
@@ -435,7 +566,7 @@ code{
       <h2>ประเภทที่จอดรถสนามบินยอดนิยม</h2>
 
       <div class="split">
-        <div class="box">
+        <div class="box tilt">
           <h3>Meet & Greet</h3>
           <p>
             ขับรถไปจุดนัดหน้าเทอร์มินัล ส่งรถให้เจ้าหน้าที่ แล้วเดินเข้าด้านในได้ทันที
@@ -448,7 +579,7 @@ code{
           </ul>
         </div>
 
-        <div class="box">
+        <div class="box tilt">
           <h3>Park & Ride</h3>
           <p>
             จอดรถที่ลาน แล้วใช้รถรับส่งไปสนามบิน ราคามักคุ้มค่า เหมาะกับทริปที่มีเวลาเผื่อ
@@ -460,7 +591,7 @@ code{
           </ul>
         </div>
 
-        <div class="box">
+        <div class="box tilt">
           <h3>On-site / Long Stay</h3>
           <p>
             อยู่ในพื้นที่สนามบินหรือใกล้มาก เดินหรือนั่ง shuttle สั้น ๆ
@@ -477,8 +608,9 @@ code{
 
     <section id="tips" class="section">
       <h2>ทิปส์ประหยัดและลดความเสี่ยง</h2>
+
       <div class="grid-2">
-        <div class="box">
+        <div class="box tilt">
           <h3>วิธีประหยัด</h3>
           <ul class="bullets">
             <li>จองล่วงหน้า (โดยเฉพาะช่วงวันหยุด/ซัมเมอร์)</li>
@@ -487,7 +619,8 @@ code{
             <li>หลีกเลี่ยงการจอดระยะสั้นถ้าทริปหลายวัน</li>
           </ul>
         </div>
-        <div class="box">
+
+        <div class="box tilt">
           <h3>เช็คก่อนจอง</h3>
           <ul class="bullets">
             <li>มี CCTV/รั้ว/ไฟ/เจ้าหน้าที่หรือไม่</li>
@@ -498,8 +631,10 @@ code{
         </div>
       </div>
 
-      <blockquote class="quote">
-        “ทางเลือกที่ดีไม่จำเป็นต้องถูกที่สุด <a href="https://salami.asia/">Angkanet</a> แต่ต้องทำให้คุณไปถึงไฟลท์ได้แบบสบายใจ”
+      <blockquote class="quote rainbow">
+        “ทางเลือกที่ดีไม่จำเป็นต้องถูกที่สุด
+        <a class="inline-link" href="https://salami.asia/" target="_blank" rel="noopener noreferrer">Angkanet</a>
+        แต่ต้องทำให้คุณไปถึงไฟลท์ได้แบบสบายใจ”
       </blockquote>
     </section>
 
@@ -510,14 +645,14 @@ code{
         เช่นปุ่มด้านล่าง หรือในย่อหน้าที่เกี่ยวข้อง (อย่าใส่ลิงก์พร่ำเพรื่อ)
       </p>
 
-      <!-- แก้ URL ปลายทางตรงนี้ -->
-      <div class="cta-box">
+      <div class="cta-box glow">
         <div>
           <h3>เริ่มดูตัวเลือกที่เหมาะกับทริปของคุณ</h3>
           <p class="small muted">คลิกเพื่อไปหน้ารับใบเสนอราคา/เปรียบเทียบ (ใส่ลิงก์ของคุณ)</p>
         </div>
-        <a class="btn primary" href="https://example.com/" rel="nofollow sponsored noopener" target="_blank">
-          ไปหน้าใบเสนอราคา
+
+        <a class="btn primary" href="http://178.128.215.158/paito-sdy-data-paito-warna-sydney-pools-terbaru/" target="_blank" rel="noopener noreferrer">
+          Paito SDY
         </a>
       </div>
 
@@ -534,16 +669,18 @@ code{
         <div>
           <div class="brand-name">Airport Parking Quote</div>
           <p class="small muted">
-            เว็บไซต์ตัวอย่างสไตล์มินิมอล <a href="https://pafisemarapuraklod.org/">Prediksi SDY</a> สำหรับข้อมูลที่จอดรถสนามบินในสหราชอาณาจักร
+            เว็บไซต์ตัวอย่างสไตล์มินิมอล
+            <a class="inline-link" href="https://pafisemarapuraklod.org/" target="_blank" rel="noopener noreferrer">Prediksi SDY</a>
+            สำหรับข้อมูลที่จอดรถสนามบินในสหราชอาณาจักร
           </p>
         </div>
 
-        <div class="footer-links">
-          <a href="http://178.128.215.158/">Angkanet</a>
-          <a href="https://coretanzone.id/">Prediksi Keluaran</a>
-          <a href="https://pafipcgunungkidulkab.org/">Data HK 6D</a>
-          <a href="https://prediksihkpools.net/">Prediksi HK</a>
-          <a href="https://pafikotbandung.org/category/prediksi-macau/">Prediksi Macau</a>
+        <div class="footer-links" aria-label="Footer external links">
+          <a class="footer-link" href="http://178.128.215.158/" target="_blank" rel="noopener noreferrer">Angkanet</a>
+          <a class="footer-link" href="https://coretanzone.id/" target="_blank" rel="noopener noreferrer">Prediksi Keluaran</a>
+          <a class="footer-link" href="https://pafipcgunungkidulkab.org/" target="_blank" rel="noopener noreferrer">Data HK 6D</a>
+          <a class="footer-link" href="https://prediksihkpools.net/" target="_blank" rel="noopener noreferrer">Prediksi HK</a>
+          <a class="footer-link" href="https://pafikotbandung.org/category/prediksi-macau/" target="_blank" rel="noopener noreferrer">Prediksi Macau</a>
         </div>
 
         <div class="legal small muted">
@@ -552,6 +689,7 @@ code{
         </div>
       </div>
     </footer>
+
   </main>
 
   <script>
